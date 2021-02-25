@@ -1,4 +1,4 @@
-package com.com.chengyu;
+package com.chengyu;
 
 /**
  * @author lix.
