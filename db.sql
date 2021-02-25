@@ -12,5 +12,6 @@ CREATE TABLE t_user
     phone        VARCHAR(128) COMMENT '手机号码',
     password     VARCHAR(32) COMMENT '密码',
     role         INT COMMENT '角色',
-    status       INT COMMENT '状态 0、删除；1、正常'
-) COMMENT = ' ';
+    status       INT(1) COMMENT '状态 0、删除；1、正常',
+    openid VARCHAR(128)    COMMENT '微信标识'
+) COMMENT = '用户登录表';
