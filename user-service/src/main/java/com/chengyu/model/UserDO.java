@@ -1,14 +1,16 @@
 package com.chengyu.model;
 
 import com.baomidou.mybatisplus.annotation.TableName;
+import com.baomidou.mybatisplus.annotation.IdType;
 import java.util.Date;
+import com.baomidou.mybatisplus.annotation.TableId;
 import java.io.Serializable;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 
 /**
  * <p>
- * 用户登录表
+ * 
  * </p>
  *
  * @author Lix
@@ -16,20 +18,21 @@ import lombok.EqualsAndHashCode;
  */
 @Data
 @EqualsAndHashCode(callSuper = false)
-@TableName("t_user")
-public class TUserDO implements Serializable {
+@TableName("user")
+public class UserDO implements Serializable {
 
     private static final long serialVersionUID = 1L;
+
+    /**
+     * ID
+     */
+      @TableId(value = "ID", type = IdType.ASSIGN_UUID)
+    private String id;
 
     /**
      * 乐观锁
      */
     private Integer revision;
-
-    /**
-     * ID
-     */
-    private Integer id;
 
     /**
      * 创建人

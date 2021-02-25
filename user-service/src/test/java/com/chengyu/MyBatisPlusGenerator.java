@@ -32,7 +32,7 @@ public class MyBatisPlusGenerator {
                 // 文件覆盖
                 .setFileOverride(true)
                 // 主键策略
-                .setIdType(IdType.AUTO)
+                .setIdType(IdType.ASSIGN_UUID)
 
                 .setDateType(DateType.ONLY_DATE)
                 // 设置生成的service接口的名字的首字母是否为I，默认Service是以I开头的
@@ -77,7 +77,7 @@ public class MyBatisPlusGenerator {
                 // 生成的表, 支持多表一起生成，以数组形式填写
                 //TODO  TODO  TODO  TODO
 //                .setInclude("t_user","address");
-                .setInclude("t_user");
+                .setInclude("user");
 
         //4. 包名策略配置
         PackageConfig pkConfig = new PackageConfig();
