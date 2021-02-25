@@ -6,8 +6,8 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
+        <module name="project-common" />
         <module name="workorder-service" />
-        <module name="project-commmon" />
         <module name="user-service" />
       </profile>
     </annotationProcessing>
