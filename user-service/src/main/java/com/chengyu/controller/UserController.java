@@ -1,7 +1,10 @@
 package com.chengyu.controller;
 
 
+import com.chengyu.exception.BizException;
+import com.chengyu.model.UserDO;
 import com.chengyu.service.UserService;
+import com.chengyu.util.JsonData;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -25,9 +28,10 @@ public class UserController
     private UserService userService;
 
     @GetMapping("userDetil/{userid}")
-    public Object userDetil(@PathVariable("userid") String userId)
+    public JsonData userDetil(@PathVariable("userid") String userId)
     {
-        return userService.detail(userId);
+        UserDO detail = userService.detail(userId);
+        return JsonData.buildSuccess(detail);
     }
 }
 
