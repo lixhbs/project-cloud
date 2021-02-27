@@ -4,6 +4,10 @@ server:
 spring:
   application:
     name: user-service
+  redis:
+    host: 47.106.8.60
+    password: youyou
+    port: 6381
 
   #数据库配置
   datasource:
