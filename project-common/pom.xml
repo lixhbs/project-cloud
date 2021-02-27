@@ -49,6 +49,12 @@
         </dependency>
         <!-- 代码自动生成依赖 end-->
 
+<!--        单元测试-->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-test</artifactId>
+        </dependency>
+
     </dependencies>
 
 </project>
