@@ -23,6 +23,6 @@ public class MailTest
 
     @Test
     public void testSendMail(){
-        mailService.sendSimpleMail("lix@longrise.com.cn", "迎来到小滴课堂，学习主流it技术", "哈哈，这个就是内容，https://xdclass.net");
+        mailService.sendSimpleMail("lix@longrise.com.cn", "项目管理系统", "项目管理系统验证码【ER24】");
     }
 }

@@ -44,6 +44,5 @@ public class MailServiceImpl implements MailService
         message.setText(content);
         mailSender.send(message);
         log.info("邮件发送成功:{}",message.toString());
-
     }
 }

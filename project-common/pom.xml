@@ -71,6 +71,12 @@
             <artifactId>jedis</artifactId>
         </dependency>
 
+        <!--swagger ui接口文档依赖-->
+        <dependency>
+            <groupId>io.springfox</groupId>
+            <artifactId>springfox-boot-starter</artifactId>
+        </dependency>
+
     </dependencies>
 
 </project>

@@ -3,10 +3,14 @@ package com.chengyu.controller;
 import com.chengyu.util.CommonUtil;
 import com.chengyu.util.JsonData;
 import com.google.code.kaptcha.Producer;
+import io.swagger.annotations.ApiOperation;
+import io.swagger.annotations.ApiParam;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.redis.core.StringRedisTemplate;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import javax.imageio.ImageIO;
@@ -83,6 +87,29 @@ public class NotifyController
         log.info(userAgent);
         log.info(key);
         return key;
+    }
+
+    /**
+     * 支持手机号、邮箱发送验证码
+     * @return
+     */
+    @ApiOperation("发送验证码")
+    @GetMapping("send_code")
+    public JsonData sendRegisterCode(@ApiParam("收信人") @RequestParam(value = "to", required = true)String to,
+                                     @ApiParam("图形验证码") @RequestParam(value = "captcha", required = true)String  captcha,
+                                     HttpServletRequest request){
+
+        String key = getCaptchaKey(request);
+        String cacheCaptcha = redisTemplate.opsForValue().get(key);
+
+        if(cacheCaptcha != null && cacheCaptcha.equalsIgnoreCase(captcha)) {
+            redisTemplate.delete(key);
+//            JsonData jsonData = notifyService.sendCode(SendCodeEnum.USER_REGISTER,to);
+//            return jsonData;
+        }else {
+//            return JsonData.buildResult(BizCodeEnum.CODE_CAPTCHA);
+        }
+return null;
     }
 
 }
