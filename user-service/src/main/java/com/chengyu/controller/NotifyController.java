@@ -97,7 +97,7 @@ public class NotifyController
      * @return JsonData
      */
     @ApiOperation("发送验证码")
-    @GetMapping("send_code")
+    @GetMapping("sendRegisterCode")
     public JsonData sendRegisterCode(@ApiParam("收信人") @RequestParam(value = "to", required = true)String to,
                                      @ApiParam("图形验证码") @RequestParam(value = "captcha", required = true)String  captcha,
                                      HttpServletRequest request){
