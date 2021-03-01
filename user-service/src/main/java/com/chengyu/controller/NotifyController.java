@@ -1,8 +1,12 @@
 package com.chengyu.controller;
 
+import com.chengyu.enums.BizCodeEnum;
+import com.chengyu.enums.SendCodeEnum;
+import com.chengyu.service.NotifyService;
 import com.chengyu.util.CommonUtil;
 import com.chengyu.util.JsonData;
 import com.google.code.kaptcha.Producer;
+import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiParam;
 import lombok.extern.slf4j.Slf4j;
@@ -28,6 +32,7 @@ import java.util.concurrent.TimeUnit;
  * @description
  * @createtime 2021-02-26 15:46
  */
+@Api(tags = "通知模块")
 @RestController
 @RequestMapping("/api/notify/v1")
 @Slf4j
@@ -39,12 +44,15 @@ public class NotifyController
     @Autowired
     private StringRedisTemplate redisTemplate;
 
+    @Autowired
+    private NotifyService notifyService;
+
     /**
      * 临时使用10分钟有效，方便测试
      */
     private static final long CAPTCHA_CODE_EXPIRED = 60 * 1000 * 10;
 
-
+    @ApiOperation("获取图形验证码")
     @RequestMapping("/captcha")
     public void getCaptcha(HttpServletRequest httpServletRequest, HttpServletResponse httpServletResponse)
     {
@@ -52,7 +60,6 @@ public class NotifyController
         //存储
         redisTemplate.opsForValue().set(getCaptchaKey(httpServletRequest), text, CAPTCHA_CODE_EXPIRED, TimeUnit.MILLISECONDS);
 
-        log.info("图形验证码:{}", text);
         BufferedImage image = captchaProducer.createImage(text);
         try (ServletOutputStream outputStream = httpServletResponse.getOutputStream())
         {
@@ -82,16 +89,12 @@ public class NotifyController
     {
         String ipAddr = CommonUtil.getIpAddr(httpServletRequest);
         String userAgent = httpServletRequest.getHeader("User-Agent");
-        String key = "user-service:captcha:" + CommonUtil.MD5(ipAddr + userAgent);
-        log.info(ipAddr);
-        log.info(userAgent);
-        log.info(key);
-        return key;
+        return "user-service:captcha:" + CommonUtil.MD5(ipAddr + userAgent);
     }
 
     /**
      * 支持手机号、邮箱发送验证码
-     * @return
+     * @return JsonData
      */
     @ApiOperation("发送验证码")
     @GetMapping("send_code")
@@ -104,12 +107,10 @@ public class NotifyController
 
         if(cacheCaptcha != null && cacheCaptcha.equalsIgnoreCase(captcha)) {
             redisTemplate.delete(key);
-//            JsonData jsonData = notifyService.sendCode(SendCodeEnum.USER_REGISTER,to);
-//            return jsonData;
+            return notifyService.sendCode(SendCodeEnum.USER_REGISTER,to);
         }else {
-//            return JsonData.buildResult(BizCodeEnum.CODE_CAPTCHA);
+            return JsonData.buildResult(BizCodeEnum.CODE_CAPTCHA);
         }
-return null;
     }
 
 }

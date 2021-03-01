@@ -1,4 +1,4 @@
-package com.chengyu.service;
+package com.chengyu.component;
 
 /**
  * @author lix.

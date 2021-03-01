@@ -1,4 +1,4 @@
-package com.chengyu.service.Impl;
+package com.chengyu.service.impl;
 
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.chengyu.mapper.UserMapper;

@@ -7,6 +7,7 @@ import java.net.InetAddress;
 import java.net.UnknownHostException;
 import java.nio.charset.StandardCharsets;
 import java.security.MessageDigest;
+import java.util.Random;
 
 /**
  * @author lix.
@@ -93,5 +94,22 @@ public class CommonUtil
         }
         return null;
 
+    }
+
+    /**
+     * 获取验证码随机数
+     * @author Lix.
+     * @param length 验证码长度
+     * @return String
+     * @date 2021/3/1 11:13
+     */
+    public static String getRandomCode(int length){
+        String source = "1234567890";
+        Random random = new Random();
+        StringBuilder stringBuilder = new StringBuilder();
+        for (int i = 0; i < length; i++){
+            stringBuilder.append(source .charAt(random.nextInt(9)));
+        }
+        return stringBuilder.toString();
     }
 }

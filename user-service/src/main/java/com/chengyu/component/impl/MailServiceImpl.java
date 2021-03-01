@@ -1,6 +1,6 @@
-package com.chengyu.service.Impl;
+package com.chengyu.component.impl;
 
-import com.chengyu.service.MailService;
+import com.chengyu.component.MailService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;

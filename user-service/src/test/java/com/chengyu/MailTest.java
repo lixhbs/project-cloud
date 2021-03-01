@@ -1,6 +1,6 @@
 package com.chengyu;
 
-import com.chengyu.service.MailService;
+import com.chengyu.component.MailService;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
