@@ -1,6 +1,7 @@
 package com.chengyu.util;
 
 import lombok.extern.slf4j.Slf4j;
+import sun.jvm.hotspot.oops.ConstantPool;
 
 import javax.servlet.http.HttpServletRequest;
 import java.net.InetAddress;
@@ -98,18 +99,30 @@ public class CommonUtil
 
     /**
      * 获取验证码随机数
-     * @author Lix.
+     *
      * @param length 验证码长度
      * @return String
+     * @author Lix.
      * @date 2021/3/1 11:13
      */
-    public static String getRandomCode(int length){
+    public static String getRandomCode(int length)
+    {
         String source = "1234567890";
         Random random = new Random();
         StringBuilder stringBuilder = new StringBuilder();
-        for (int i = 0; i < length; i++){
-            stringBuilder.append(source .charAt(random.nextInt(9)));
+        for (int i = 0; i < length; i++)
+        {
+            stringBuilder.append(source.charAt(random.nextInt(9)));
         }
         return stringBuilder.toString();
+    }
+
+    /**
+     * 获取当前时间戳
+     * @author Lix.
+     * @date 2021/3/1 14:53
+     */
+    public static long getCurrentTimestamp(){
+        return System.currentTimeMillis();
     }
 }
