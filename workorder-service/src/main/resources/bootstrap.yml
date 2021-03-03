@@ -1,0 +1,13 @@
+spring:
+  application:
+    name: workorder-service
+  cloud:
+    nacos:
+      config:
+        server-addr: 47.106.8.60:9869 #Nacos配置中心地址
+        file-extension: yaml #文件拓展格式
+        namespace: ed1a9337-4d61-4d53-9035-f80c98ce23ea
+        group: PROJECT_CLOUD_GROUP
+  profiles:
+#    active: prod
+    active: dev

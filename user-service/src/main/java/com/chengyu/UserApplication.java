@@ -11,6 +11,7 @@ import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
  * @createtime 2021-02-25 14:32
  */
 @SpringBootApplication
+@EnableDiscoveryClient
 @MapperScan("com.chengyu.mapper")
 public class UserApplication
 {
