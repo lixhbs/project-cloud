@@ -15,9 +15,10 @@
     </modules>
 
     <properties>
+        <!--JDK版本，如果是jdk8则这里是 1.8-->
+        <java.version>1.8</java.version>
         <maven.compiler.source>1.8</maven.compiler.source>
         <maven.compiler.target>1.8</maven.compiler.target>
-        <java.version>1.8</java.version>
         <spring.boot.version>2.3.3.RELEASE</spring.boot.version>
         <spring.cloud.version>Hoxton.SR8</spring.cloud.version>
         <alibaba.cloud.version>2.2.1.RELEASE</alibaba.cloud.version>
@@ -25,8 +26,9 @@
         <lombok.version>1.18.16</lombok.version>
         <commons.lang3.version>3.9</commons.lang3.version>
         <commons.codec.version>1.15</commons.codec.version>
-        <springfox.boot.starter.version>3.0.0</springfox.boot.starter.version> <docker.image.prefix>xdclasscloud</docker.image.prefix>
-        <!--跳过单元测试 在mvn打包的时候不去跑test的代码-->
+        <springfox.boot.starter.version>3.0.0</springfox.boot.starter.version>
+        <docker.image.prefix>xdclass-cloud</docker.image.prefix>
+        <!--跳过单元测试-->
         <skipTests>true</skipTests>
     </properties>
 
@@ -73,7 +75,7 @@
                 <groupId>org.projectlombok</groupId>
                 <artifactId>lombok</artifactId>
                 <version>${lombok.version}</version>
-<!--                <scope>provided</scope>-->
+                <!--<scope>provided</scope>-->
             </dependency>
 
             <!-- https://mvnrepository.com/artifact/org.apache.commons/commons-lang3 -->
@@ -98,14 +100,14 @@
                 <version>${springfox.boot.starter.version}</version>
             </dependency>
 
-            <!--kaptcha依赖包-->
+            <!--验证码kaptcha依赖包-->
             <dependency>
                 <groupId>com.baomidou</groupId>
                 <artifactId>kaptcha-spring-boot-starter</artifactId>
                 <version>1.1.0</version>
             </dependency>
 
-            <!-- OSS各个项目单独加依赖，根据需要进行添加-->
+            <!--阿里云oss-->
             <dependency>
                 <groupId>com.aliyun.oss</groupId>
                 <artifactId>aliyun-sdk-oss</artifactId>
@@ -114,6 +116,7 @@
 
         </dependencies>
     </dependencyManagement>
+
     <!-- 代码库 -->
     <repositories>
         <repository>

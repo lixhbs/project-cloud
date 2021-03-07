@@ -1,6 +1,7 @@
 package com.chengyu.util;
 
 import lombok.extern.slf4j.Slf4j;
+import org.apache.commons.lang.StringUtils;
 import sun.jvm.hotspot.oops.ConstantPool;
 
 import javax.servlet.http.HttpServletRequest;
@@ -9,6 +10,7 @@ import java.net.UnknownHostException;
 import java.nio.charset.StandardCharsets;
 import java.security.MessageDigest;
 import java.util.Random;
+import java.util.UUID;
 
 /**
  * @author lix.
@@ -103,7 +105,6 @@ public class CommonUtil
      * @param length 验证码长度
      * @return String
      * @author Lix.
-     * @date 2021/3/1 11:13
      */
     public static String getRandomCode(int length)
     {
@@ -120,9 +121,16 @@ public class CommonUtil
     /**
      * 获取当前时间戳
      * @author Lix.
-     * @date 2021/3/1 14:53
      */
     public static long getCurrentTimestamp(){
         return System.currentTimeMillis();
+    }
+
+    /**
+     * 生成uuid
+     * @return String
+     */
+    public static String generateUUID() {
+        return UUID.randomUUID().toString().replaceAll("-","").substring(0,32);
     }
 }
