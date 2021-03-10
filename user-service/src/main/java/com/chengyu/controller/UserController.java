@@ -4,6 +4,7 @@ package com.chengyu.controller;
 import com.chengyu.enums.BizCodeEnum;
 import com.chengyu.exception.BizException;
 import com.chengyu.model.UserDO;
+import com.chengyu.request.UserRegisterRequest;
 import com.chengyu.service.FileService;
 import com.chengyu.service.UserService;
 import com.chengyu.util.JsonData;
@@ -33,7 +34,7 @@ public class UserController
     @Autowired
     private FileService fileService;
 
-    @GetMapping("userDetil/{userid}")
+    @GetMapping("/userDetil/{userid}")
     public JsonData userDetil(@PathVariable("userid") String userId)
     {
         UserDO detail = userService.detail(userId);
@@ -42,20 +43,34 @@ public class UserController
 
     /**
      * 上传用户头像
-     *
+     * <p>
      * 默认文件大小 1M,超过会报错
      *
      * @param file
      * @return JsonData
      */
     @ApiOperation("用户头像上传")
-    @PostMapping(value = "upload")
-    public JsonData uploadHeaderImg(@ApiParam(value = "文件上传",required = true) @RequestPart("file") MultipartFile file){
-
+    @PostMapping(value = "/upload")
+    public JsonData uploadHeaderImg(@ApiParam(value = "文件上传", required = true) @RequestPart("file") MultipartFile file)
+    {
         String result = fileService.uploadUserHeadImg(file);
+        return result != null ? JsonData.buildSuccess(result) : JsonData.buildResult(BizCodeEnum.FILE_UPLOAD_USER_IMG_FAIL);
+    }
 
-        return result != null?JsonData.buildSuccess(result):JsonData.buildResult(BizCodeEnum.FILE_UPLOAD_USER_IMG_FAIL);
-
+    /**
+     * 用户注册
+     *
+     * @param registerRequest 注册对象
+     * @return JsonData
+     * @author Lix.
+     * @date 2021/3/7 09:35
+     */
+    @ApiOperation("用户注册")
+    @PostMapping("/register")
+    public JsonData register(@ApiParam("用户注册对象") @RequestBody UserRegisterRequest registerRequest)
+    {
+        JsonData register = userService.register(registerRequest);
+        return JsonData.buildSuccess(register);
     }
 }
 

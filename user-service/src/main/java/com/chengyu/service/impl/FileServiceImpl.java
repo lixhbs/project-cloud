@@ -8,6 +8,7 @@ import com.chengyu.service.FileService;
 import com.chengyu.util.CommonUtil;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
@@ -28,9 +29,13 @@ public class FileServiceImpl implements FileService
     @Autowired
     private OssConfig ossConfig;
 
+    @Value(value = "${spring.profiles.active}")
+    private String active;
+
     @Override
     public String uploadUserHeadImg(MultipartFile file)
     {
+        // @TODO 需要实现图片压缩！
         String originalFilename = file.getOriginalFilename();
 
         String bucketName = ossConfig.getBucketname();
@@ -47,7 +52,7 @@ public class FileServiceImpl implements FileService
         String fileName = CommonUtil.generateUUID();
         String extension = originalFilename.substring(originalFilename.lastIndexOf("."));
         //在oss上创建文件夹test路径
-        String newFileName = "test/" + folder + "/" + fileName + extension;
+        String newFileName = active + "/" + folder + "/" + fileName + extension;
         try {
             PutObjectResult result = ossClient.putObject(bucketName, newFileName, file.getInputStream());
             //返回访问路径

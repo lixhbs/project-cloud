@@ -21,4 +21,15 @@ public interface NotifyService
      * @date 2021/3/1 11:00
      */
     JsonData sendCode(SendCodeEnum sendCodeType, String to);
+
+    /**
+     * 校验图形验证码
+     * @author Lix.
+     * @param sendCodeEnum sendCodeEnum 验证码业务类型
+     * @param to to 接收者
+     * @param code code 待验证的验证码
+     * @return boolean
+     * @date 2021/3/10 07:56
+     */
+    boolean checkCode(SendCodeEnum sendCodeEnum, String to, String code);
 }

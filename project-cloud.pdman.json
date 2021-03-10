@@ -64,8 +64,8 @@
               "chnname": "手机号码"
             },
             {
-              "name": "password",
-              "type": "DefaultString",
+              "name": "pwd",
+              "type": "MiddleString",
               "remark": "",
               "chnname": "密码"
             },
@@ -86,6 +86,24 @@
               "type": "ShortString",
               "remark": "",
               "chnname": "微信标识"
+            },
+            {
+              "name": "head_img",
+              "type": "DefaultString",
+              "remark": "",
+              "chnname": "头像"
+            },
+            {
+              "name": "sex",
+              "type": "Integer",
+              "remark": "0表示女，1表示男",
+              "chnname": "性别"
+            },
+            {
+              "name": "slogan",
+              "type": "DefaultString",
+              "remark": "",
+              "chnname": "用户个人性签名"
             }
           ],
           "indexs": [],

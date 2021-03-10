@@ -10,11 +10,11 @@ import lombok.EqualsAndHashCode;
 
 /**
  * <p>
- * 
+ * 用户 
  * </p>
  *
  * @author Lix
- * @since 2021-02-25
+ * @since 2021-03-10
  */
 @Data
 @EqualsAndHashCode(callSuper = false)
@@ -72,7 +72,7 @@ public class UserDO implements Serializable {
     /**
      * 密码
      */
-    private String password;
+    private String pwd;
 
     /**
      * 角色
@@ -88,6 +88,21 @@ public class UserDO implements Serializable {
      * 微信标识
      */
     private String openid;
+
+    /**
+     * 头像
+     */
+    private String headImg;
+
+    /**
+     * 性别 0表示女，1表示男
+     */
+    private Integer sex;
+
+    /**
+     * 用户个人性签名
+     */
+    private String slogan;
 
 
 }
