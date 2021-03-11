@@ -89,7 +89,7 @@
             },
             {
               "name": "head_img",
-              "type": "DefaultString",
+              "type": "LongString",
               "remark": "",
               "chnname": "头像"
             },
@@ -100,8 +100,20 @@
               "chnname": "性别"
             },
             {
+              "name": "secret",
+              "type": "LongKey",
+              "remark": "",
+              "chnname": "secret"
+            },
+            {
+              "name": "mail",
+              "type": "LongKey",
+              "remark": "",
+              "chnname": "邮箱"
+            },
+            {
               "name": "slogan",
-              "type": "DefaultString",
+              "type": "LongString",
               "remark": "",
               "chnname": "用户个人性签名"
             }

@@ -4,27 +4,29 @@
 
     <!-- 通用查询映射结果 -->
     <resultMap id="BaseResultMap" type="com.chengyu.model.UserDO">
-        <id column="ID" property="id"/>
-        <result column="REVISION" property="revision"/>
-        <result column="CREATED_BY" property="createdBy"/>
-        <result column="CREATED_TIME" property="createdTime"/>
-        <result column="UPDATED_BY" property="updatedBy"/>
-        <result column="UPDATED_TIME" property="updatedTime"/>
-        <result column="name" property="name"/>
-        <result column="account" property="account"/>
-        <result column="phone" property="phone"/>
-        <result column="pwd" property="pwd"/>
-        <result column="role" property="role"/>
-        <result column="status" property="status"/>
-        <result column="openid" property="openid"/>
-        <result column="head_img" property="headImg"/>
-        <result column="sex" property="sex"/>
-        <result column="slogan" property="slogan"/>
+        <id column="ID" property="id" />
+        <result column="REVISION" property="revision" />
+        <result column="CREATED_BY" property="createdBy" />
+        <result column="CREATED_TIME" property="createdTime" />
+        <result column="UPDATED_BY" property="updatedBy" />
+        <result column="UPDATED_TIME" property="updatedTime" />
+        <result column="name" property="name" />
+        <result column="account" property="account" />
+        <result column="phone" property="phone" />
+        <result column="pwd" property="pwd" />
+        <result column="role" property="role" />
+        <result column="status" property="status" />
+        <result column="openid" property="openid" />
+        <result column="head_img" property="headImg" />
+        <result column="sex" property="sex" />
+        <result column="secret" property="secret" />
+        <result column="mail" property="mail" />
+        <result column="slogan" property="slogan" />
     </resultMap>
 
     <!-- 通用查询结果列 -->
     <sql id="Base_Column_List">
-        ID, REVISION, CREATED_BY, CREATED_TIME, UPDATED_BY, UPDATED_TIME, name, account, phone, pwd, role, status, openid, head_img, sex, slogan
+        ID, REVISION, CREATED_BY, CREATED_TIME, UPDATED_BY, UPDATED_TIME, name, account, phone, pwd, role, status, openid, head_img, sex, secret, mail, slogan
     </sql>
 
 </mapper>

@@ -133,4 +133,21 @@ public class CommonUtil
     public static String generateUUID() {
         return UUID.randomUUID().toString().replaceAll("-","").substring(0,32);
     }
+
+    /**
+     * 生成指定长度随机字母和数字
+     *
+     * @param length
+     * @return
+     */
+    private static final String ALL_CHAR_NUM = "0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz";
+    public static String getStringNumRandom(int length) {
+        //生成随机数字和字母,
+        Random random = new Random();
+        StringBuilder saltString = new StringBuilder(length);
+        for (int i = 1; i <= length; ++i) {
+            saltString.append(ALL_CHAR_NUM.charAt(random.nextInt(ALL_CHAR_NUM.length())));
+        }
+        return saltString.toString();
+    }
 }

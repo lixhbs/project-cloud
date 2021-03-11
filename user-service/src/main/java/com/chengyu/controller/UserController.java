@@ -4,6 +4,7 @@ package com.chengyu.controller;
 import com.chengyu.enums.BizCodeEnum;
 import com.chengyu.exception.BizException;
 import com.chengyu.model.UserDO;
+import com.chengyu.request.UserLoginRequest;
 import com.chengyu.request.UserRegisterRequest;
 import com.chengyu.service.FileService;
 import com.chengyu.service.UserService;
@@ -46,7 +47,7 @@ public class UserController
      * <p>
      * 默认文件大小 1M,超过会报错
      *
-     * @param file
+     * @param file 文件上传
      * @return JsonData
      */
     @ApiOperation("用户头像上传")
@@ -72,5 +73,20 @@ public class UserController
         JsonData register = userService.register(registerRequest);
         return JsonData.buildSuccess(register);
     }
+
+    /**
+     * 登录
+     * @param loginRequest
+     * @return
+     */
+    @ApiOperation("用户登录")
+    @PostMapping("login")
+    public JsonData register(@RequestBody UserLoginRequest loginRequest){
+
+        JsonData jsonData = userService.login(loginRequest);
+        return jsonData;
+    }
+
+
 }
 

@@ -4,9 +4,12 @@ import com.chengyu.component.MailService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
-import org.springframework.mail.SimpleMailMessage;
 import org.springframework.mail.javamail.JavaMailSender;
+import org.springframework.mail.javamail.MimeMessageHelper;
 import org.springframework.stereotype.Service;
+
+import javax.mail.MessagingException;
+import javax.mail.internet.MimeMessage;
 
 
 /**
@@ -33,16 +36,27 @@ public class MailServiceImpl implements MailService
     public void sendSimpleMail(String to, String subject, String content)
     {
         //创建一个邮箱消息对象
-        SimpleMailMessage message = new SimpleMailMessage();
-        //配置邮箱发送人
-        message.setFrom(from);
-        //邮件的收件人 因为一直发送失败，所以将自己也添加到收件人，这样就好了
-        message.setTo(to,from);
-        //邮件的主题
-        message.setSubject(subject);
-        //邮件的内容
-        message.setText(content);
-        mailSender.send(message);
-        log.info("邮件发送成功:{}",message.toString());
+        MimeMessage message=mailSender.createMimeMessage();
+        //true表示需要创建一个multipart message
+        try
+        {
+            MimeMessageHelper helper=new MimeMessageHelper(message,true);
+            //配置邮箱发送人
+            helper.setFrom(from);
+            //邮件的收件人 因为一直发送失败，所以将自己也添加到收件人，这样就好了
+            helper.setTo(to);
+            //邮件的主题
+            helper.setSubject(subject);
+            helper.addCc(from);
+            //邮件的内容
+            helper.setText(content, true);
+            mailSender.send(message);
+            log.info("邮件发送成功:{}",message.toString());
+        } catch (MessagingException e)
+        {
+            log.error("邮件发送失败:{}",message.toString());
+            e.printStackTrace();
+
+        }
     }
 }

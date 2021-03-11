@@ -107,7 +107,7 @@ public class NotifyController
 
         if(cacheCaptcha != null && cacheCaptcha.equalsIgnoreCase(captcha)) {
             redisTemplate.delete(key);
-            return notifyService.sendCode(SendCodeEnum.USER_REGISTER,to);
+            return notifyService.sendCode(SendCodeEnum.USER_REGISTER, to);
         }else {
             return JsonData.buildResult(BizCodeEnum.CODE_CAPTCHA);
         }

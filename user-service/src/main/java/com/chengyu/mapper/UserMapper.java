@@ -2,6 +2,7 @@ package com.chengyu.mapper;
 
 import com.chengyu.model.UserDO;
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
+import org.apache.ibatis.annotations.Mapper;
 
 /**
  * <p>
@@ -11,7 +12,7 @@ import com.baomidou.mybatisplus.core.mapper.BaseMapper;
  * @author Lix
  * @since 2021-03-10
  */
-public interface UserMapper extends BaseMapper<UserDO>
-{
+@Mapper
+public interface UserMapper extends BaseMapper<UserDO> {
 
 }

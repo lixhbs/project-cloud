@@ -2,36 +2,31 @@ package com.chengyu.model;
 
 import com.baomidou.mybatisplus.annotation.TableName;
 import com.baomidou.mybatisplus.annotation.IdType;
-
 import java.util.Date;
-
 import com.baomidou.mybatisplus.annotation.TableId;
-
 import java.io.Serializable;
-
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 
 /**
  * <p>
- * 用户
+ * 用户 
  * </p>
  *
  * @author Lix
- * @since 2021-03-10
+ * @since 2021-03-11
  */
 @Data
 @EqualsAndHashCode(callSuper = false)
 @TableName("user")
-public class UserDO implements Serializable
-{
+public class UserDO implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
     /**
      * ID
      */
-    @TableId(value = "ID", type = IdType.ASSIGN_UUID)
+      @TableId(value = "ID", type = IdType.ASSIGN_UUID)
     private String id;
 
     /**
@@ -103,6 +98,16 @@ public class UserDO implements Serializable
      * 性别 0表示女，1表示男
      */
     private Integer sex;
+
+    /**
+     * secret
+     */
+    private String secret;
+
+    /**
+     * 邮箱
+     */
+    private String mail;
 
     /**
      * 用户个人性签名
