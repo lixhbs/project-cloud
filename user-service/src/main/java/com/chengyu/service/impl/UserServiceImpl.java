@@ -4,12 +4,14 @@ import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.chengyu.enums.BizCodeEnum;
 import com.chengyu.enums.SendCodeEnum;
 import com.chengyu.mapper.UserMapper;
+import com.chengyu.model.LoginUser;
 import com.chengyu.model.UserDO;
 import com.chengyu.request.UserLoginRequest;
 import com.chengyu.request.UserRegisterRequest;
 import com.chengyu.service.NotifyService;
 import com.chengyu.service.UserService;
 import com.chengyu.util.CommonUtil;
+import com.chengyu.util.JwtUtil;
 import com.chengyu.util.JsonData;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.codec.digest.Md5Crypt;
@@ -85,7 +87,9 @@ public class UserServiceImpl implements UserService
             if (cryptPwd.equals(userDO.getPwd())) {
                 //生成token令牌
                 log.info("用户{}，登录成功", userDO.getName());
-                return JsonData.buildSuccess();
+                LoginUser userDTO = new LoginUser();
+                BeanUtils.copyProperties(userDO, userDTO);
+                return JsonData.buildSuccess(JwtUtil.geneJsonWebToken(userDTO));
             }
             //密码错误
             return JsonData.buildResult(BizCodeEnum.ACCOUNT_PWD_ERROR);
