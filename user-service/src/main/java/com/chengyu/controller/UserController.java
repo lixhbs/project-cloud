@@ -80,7 +80,7 @@ public class UserController
      * @return
      */
     @ApiOperation("用户登录")
-    @PostMapping("login")
+    @PostMapping("/login")
     public JsonData register(@RequestBody UserLoginRequest loginRequest){
 
         JsonData jsonData = userService.login(loginRequest);
