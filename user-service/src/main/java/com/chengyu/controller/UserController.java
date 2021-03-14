@@ -35,11 +35,19 @@ public class UserController
     @Autowired
     private FileService fileService;
 
-    @GetMapping("/userDetil/{userid}")
-    public JsonData userDetil(@PathVariable("userid") String userId)
+
+    @GetMapping("/userDetail/{userid}")
+    public JsonData userDetail(@PathVariable("userid") String userId)
     {
         UserDO detail = userService.detail(userId);
         return JsonData.buildSuccess(detail);
+    }
+
+    @ApiOperation("用户信息")
+    @GetMapping("/detail")
+    public JsonData detail()
+    {
+        return JsonData.buildSuccess(userService.findUserDetail());
     }
 
     /**
@@ -74,17 +82,11 @@ public class UserController
         return JsonData.buildSuccess(register);
     }
 
-    /**
-     * 登录
-     * @param loginRequest
-     * @return
-     */
     @ApiOperation("用户登录")
     @PostMapping("/login")
-    public JsonData register(@RequestBody UserLoginRequest loginRequest){
-
-        JsonData jsonData = userService.login(loginRequest);
-        return jsonData;
+    public JsonData login(@RequestBody UserLoginRequest loginRequest)
+    {
+        return userService.login(loginRequest);
     }
 
 

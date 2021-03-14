@@ -16,15 +16,14 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 public class InterceptorConfig implements WebMvcConfigurer
 {
 
-    public LoginInterceptor loginInterceptor(){
-        return new LoginInterceptor();
-    }
-
     @Override
     public void addInterceptors(InterceptorRegistry registry)
     {
-        registry.addInterceptor(loginInterceptor())
+        registry.addInterceptor(new LoginInterceptor())
+                // 拦截
                 .addPathPatterns("/api/user/*/**")
-                .excludePathPatterns("/api/user/*/register", "/api/user/*/login", "/api/user/*/upload");
+                // 排除拦截
+                .excludePathPatterns("/api/user/*/register",
+                        "/api/user/*/login", "/api/user/*/upload");
     }
 }

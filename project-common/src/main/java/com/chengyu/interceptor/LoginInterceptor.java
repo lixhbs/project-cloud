@@ -25,7 +25,7 @@ import javax.servlet.http.HttpServletResponse;
 public class LoginInterceptor implements HandlerInterceptor
 {
 
-    private static final ThreadLocal<LoginUser> THREAD_LOCAL = new ThreadLocal<>();
+    public static ThreadLocal<LoginUser> THREAD_LOCAL = new ThreadLocal<>();
 
     @Override
     public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) throws Exception
