@@ -1,5 +1,7 @@
 package com.chengyu.service;
 
+import com.chengyu.request.ProjectRequest;
+
 /**
  * @author lix.
  * @title
@@ -9,6 +11,7 @@ package com.chengyu.service;
  */
 public interface ProjectService
 {
+    int add(ProjectRequest projectRequest);
 
 
 }
