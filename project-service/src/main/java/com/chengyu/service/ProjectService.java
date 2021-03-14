@@ -12,7 +12,12 @@ import com.chengyu.util.JsonData;
  */
 public interface ProjectService
 {
+    /**
+     * 新增项目
+     * @author Lix.
+     * @param projectRequest projectRequest
+     * @return JsonData
+     * @date 2021/3/14 16:43
+     */
     JsonData add(ProjectRequest projectRequest);
-
-
 }
