@@ -1,8 +1,11 @@
 package com.chengyu.service.impl;
 
+import com.baomidou.mybatisplus.core.conditions.Wrapper;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
+import com.baomidou.mybatisplus.core.conditions.segments.MergeSegments;
 import com.chengyu.enums.BizCodeEnum;
 import com.chengyu.enums.SendCodeEnum;
+import com.chengyu.interceptor.LoginInterceptor;
 import com.chengyu.mapper.UserMapper;
 import com.chengyu.model.LoginUser;
 import com.chengyu.model.UserDO;
@@ -13,7 +16,9 @@ import com.chengyu.service.UserService;
 import com.chengyu.util.CommonUtil;
 import com.chengyu.util.JwtUtil;
 import com.chengyu.util.JsonData;
+import com.chengyu.vo.UserVO;
 import lombok.extern.slf4j.Slf4j;
+import org.apache.catalina.User;
 import org.apache.commons.codec.digest.Md5Crypt;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.BeanUtils;
@@ -44,6 +49,16 @@ public class UserServiceImpl implements UserService
     public UserDO detail(String id)
     {
         return userMapper.selectOne(new QueryWrapper<UserDO>().eq("id", id));
+    }
+
+    @Override
+    public UserVO findUserDetail()
+    {
+        LoginUser loginUser = LoginInterceptor.THREAD_LOCAL.get();
+        UserDO userDO = userMapper.selectOne(new QueryWrapper<UserDO>().eq("id", loginUser.getId()));
+        UserVO userVO = new UserVO();
+        BeanUtils.copyProperties(userDO, userVO);
+        return userVO;
     }
 
     @Override
