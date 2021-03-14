@@ -67,12 +67,30 @@ public class UserServiceImpl implements UserService
         //密码 + 加盐处理
         String cryptPwd = Md5Crypt.md5Crypt(registerRequest.getPwd().getBytes(), userDO.getSecret());
         userDO.setPwd(cryptPwd);
-        int rows = userMapper.insert(userDO);
-        log.info("rows: {}, 注册成功: {}", rows, userDO.toString());
 
-        // @TODO 判断账号是否唯一
+        // 这里需要判断改验证码是否注册
+        if( checkUnique(userDO.getMail())){
+            int rows = userMapper.insert(userDO);
+            log.info("rows: {}, 注册成功: {}", rows, userDO.toString());
+            // 账号注册后的操作
+            return JsonData.buildSuccess();
+        } else {
+            return JsonData.buildResult(BizCodeEnum.ACCOUNT_REPEAT);
+        }
 
-        return JsonData.buildSuccess();
+    }
+
+    /**
+     * 校验该邮箱是否注册
+     * @author Lix.
+     * @param mail 邮箱
+     * @return boolean 邮箱是否存在
+     * @date 2021/3/14 11:41
+     */
+    private boolean checkUnique(String mail)
+    {
+        List<UserDO> userList = userMapper.selectList(new QueryWrapper<UserDO>().eq("mail", mail));
+        return userList == null || userList.size() <= 0;
     }
 
     @Override
