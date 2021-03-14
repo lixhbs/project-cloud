@@ -33,7 +33,6 @@ public class ProjectController
     @PostMapping("/add")
     public JsonData add(@ApiParam("项目对象") @RequestBody ProjectRequest projectRequest)
     {
-        int add = projectService.add(projectRequest);
-        return JsonData.buildSuccess(add);
+        return projectService.add(projectRequest);
     }
 }

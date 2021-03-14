@@ -1,8 +1,6 @@
 package com.chengyu.service.impl;
 
-import com.baomidou.mybatisplus.core.conditions.Wrapper;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
-import com.baomidou.mybatisplus.core.conditions.segments.MergeSegments;
 import com.chengyu.enums.BizCodeEnum;
 import com.chengyu.enums.SendCodeEnum;
 import com.chengyu.interceptor.LoginInterceptor;
@@ -18,7 +16,6 @@ import com.chengyu.util.JwtUtil;
 import com.chengyu.util.JsonData;
 import com.chengyu.vo.UserVO;
 import lombok.extern.slf4j.Slf4j;
-import org.apache.catalina.User;
 import org.apache.commons.codec.digest.Md5Crypt;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.BeanUtils;

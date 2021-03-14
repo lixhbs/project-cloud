@@ -1,6 +1,7 @@
 package com.chengyu.service;
 
 import com.chengyu.request.ProjectRequest;
+import com.chengyu.util.JsonData;
 
 /**
  * @author lix.
@@ -11,7 +12,7 @@ import com.chengyu.request.ProjectRequest;
  */
 public interface ProjectService
 {
-    int add(ProjectRequest projectRequest);
+    JsonData add(ProjectRequest projectRequest);
 
 
 }

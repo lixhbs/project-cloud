@@ -35,6 +35,11 @@ public enum BizCodeEnum
     ACCOUNT_UNLOGIN(250004,"账号未登录"),
 
     /**
+     * 项目
+     */
+    PROJECT_REPEAT(260001, "项目已存在"),
+
+    /**
      * 文件相关
      */
     FILE_UPLOAD_USER_IMG_FAIL(600101,"用户头像文件上传失败");

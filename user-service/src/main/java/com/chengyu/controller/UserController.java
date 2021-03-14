@@ -35,7 +35,6 @@ public class UserController
     @Autowired
     private FileService fileService;
 
-
     @GetMapping("/userDetail/{userid}")
     public JsonData userDetail(@PathVariable("userid") String userId)
     {
@@ -78,8 +77,7 @@ public class UserController
     @PostMapping("/register")
     public JsonData register(@ApiParam("用户注册对象") @RequestBody UserRegisterRequest registerRequest)
     {
-        JsonData register = userService.register(registerRequest);
-        return JsonData.buildSuccess(register);
+        return userService.register(registerRequest);
     }
 
     @ApiOperation("用户登录")
