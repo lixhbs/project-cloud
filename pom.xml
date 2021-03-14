@@ -12,6 +12,7 @@
         <module>workorder-service</module>
         <module>user-service</module>
         <module>project-common</module>
+        <module>project-service</module>
     </modules>
 
     <properties>

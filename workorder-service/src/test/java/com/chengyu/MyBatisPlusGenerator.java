@@ -17,7 +17,8 @@ import com.baomidou.mybatisplus.generator.config.rules.NamingStrategy;
  * @description
  * @createtime 2021-02-25 15:16
  */
-public class MyBatisPlusGenerator {
+public class MyBatisPlusGenerator
+{
 
     public static void main(String[] args) {
         //1. 全局配置
@@ -56,7 +57,7 @@ public class MyBatisPlusGenerator {
         dsConfig.setDbType(DbType.MYSQL)
                 .setDriverName("com.mysql.cj.jdbc.Driver")
                 //TODO  TODO  TODO  TODO
-                .setUrl("jdbc:mysql://47.106.8.60:3306/d_user?useSSL=false")
+                .setUrl("jdbc:mysql://47.106.8.60:3306/d_work_order?useSSL=false")
                 .setUsername("project")
                 .setPassword("Project@2021?");
 

@@ -7,9 +7,10 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
-        <module name="project-common" />
-        <module name="workorder-service" />
         <module name="user-service" />
+        <module name="project-common" />
+        <module name="project-service" />
+        <module name="workorder-service" />
       </profile>
     </annotationProcessing>
   </component>
