@@ -70,7 +70,7 @@ public class UserVO
     private String mail;
 
     /**
-     * 用户个人性签名
+     * 个人性签名
      */
     private String slogan;
 }
